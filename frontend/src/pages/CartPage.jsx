@@ -145,6 +145,17 @@ export default function CartPage() {
             <p className="text-xs text-pink-600">Handmade crochet</p>
           </div>
           <div className="flex items-center gap-2">
+            {user && (
+              <button
+                onClick={() => navigate('/dashboard')}
+                className="w-9 h-9 rounded-full bg-pink-100 flex items-center justify-center"
+                aria-label="Dashboard"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-pink-700" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                </svg>
+              </button>
+            )}
             <button
               onClick={() => navigate('/cart')}
               className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/90 shadow text-pink-700"
