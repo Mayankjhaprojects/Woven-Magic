@@ -114,6 +114,17 @@ export default function HomePage() {
     }
   };
 
+  // New helper: if user logged in -> go to preview, otherwise redirect to login and keep the target in state
+  const handlePreview = (productId) => {
+    const target = `/preview/${productId}`;
+    if (user) {
+      navigate(target);
+    } else {
+      // Redirect to login and save where the user wanted to go
+      navigate('/login', { state: { from: target }, replace: false });
+    }
+  };
+
   const filtered = products.filter((p) =>
     p.name.toLowerCase().includes(query.trim().toLowerCase())
   );
@@ -296,7 +307,7 @@ export default function HomePage() {
                     Add to cart
                   </button>
                   <button
-                    onClick={() => navigate(`/preview/${p._id}`)}
+                    onClick={() => handlePreview(p._id)}
                     className="w-full sm:w-auto py-2 px-3 rounded-full border border-pink-200 text-pink-600"
                   >
                     Preview
